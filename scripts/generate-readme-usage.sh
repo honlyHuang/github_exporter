@@ -2,7 +2,7 @@
 
 MKTEMP=$(mktemp)
 
-HELP="$(node index.js --help)"
+HELP="$(./index.mjs --help)"
 
 {
   sed '/## Usage/q' README.md;

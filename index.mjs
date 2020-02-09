@@ -1,19 +1,16 @@
-#!/usr/bin/env node
-require('dotenv').config()
+#!/usr/bin/env node --experimental-modules --require dotenv/config
 
-const http = require('http')
+import http from 'http'
+import Prometheus from 'prom-client'
 
-const Prometheus = require('prom-client')
-
-const { argv } = require('./lib/args')
-const scraper = require('./lib/scraper')
-const logger = require('./lib/logger')
+import { argv } from './lib/args.mjs'
+import * as scraper from './lib/scraper.mjs'
+import logger from './lib/logger.mjs'
 
 const metricsInterval = Prometheus.collectDefaultMetrics()
 
 const server = http.createServer((req, res) => {
-  const path = new URL(req.url).pathname
-  switch (path) {
+  switch (req.url) {
     case '/metrics':
       res.writeHead(200, { 'Content-Type': Prometheus.register.contentType })
       res.write(Prometheus.register.metrics())

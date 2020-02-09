@@ -48,7 +48,7 @@ More information:
 ## Usage
 
 ```
-index.js -t <token> -i 600 [ -s ] [ -l :: ] [ -p 9171 ] [ -o organization ] [ -u user ] [ -r owner/repository ]
+index.mjs -t <token> -i 600 [ -s ] [ -l :: ] [ -p 9171 ] [ -o organization ] [ -u user ] [ -r owner/repository ]
 
 Scape settings:
   --interval, -i  scrape interval  [number] [default: 600]
